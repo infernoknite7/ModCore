@@ -1,0 +1,69 @@
+name: ModCore
+version: 1.0.0
+main: com.modcore.ModCore
+api-version: "1.21"
+description: Combat timer, ban, mute, vanish and warnings in one plugin.
+
+commands:
+  ban:
+    description: Ban a player
+    usage: /ban <player> [duration] [reason]
+    permission: modcore.ban
+  unban:
+    description: Unban a player
+    usage: /unban <player>
+    permission: modcore.ban
+  mute:
+    description: Mute a player
+    usage: /mute <player> [duration] [reason]
+    permission: modcore.mute
+  unmute:
+    description: Unmute a player
+    usage: /unmute <player>
+    permission: modcore.mute
+  warn:
+    description: Warn a player (3 warnings = 1 day ban)
+    usage: /warn <player> [reason]
+    permission: modcore.warn
+  warnings:
+    description: View a player's warnings
+    usage: /warnings <player>
+    permission: modcore.warn
+  clearwarnings:
+    description: Clear a player's warnings
+    usage: /clearwarnings <player>
+    permission: modcore.warn
+  vanish:
+    description: Toggle vanish
+    usage: /vanish
+    permission: modcore.vanish
+    aliases: [v]
+  modcore:
+    description: ModCore admin command
+    usage: /modcore reload
+    permission: modcore.admin
+
+permissions:
+  modcore.ban:
+    default: op
+  modcore.mute:
+    default: op
+  modcore.warn:
+    default: op
+  modcore.vanish:
+    default: op
+  modcore.vanish.see:
+    default: op
+  modcore.admin:
+    default: op
+  modcore.combat.bypass:
+    default: false
+  modcore.*:
+    default: false
+    children:
+      modcore.ban: true
+      modcore.mute: true
+      modcore.warn: true
+      modcore.vanish: true
+      modcore.vanish.see: true
+      modcore.admin: true
